@@ -4,7 +4,7 @@
 
 ## Overview
 
-A begginers tutorial for ROS Publisher and Subscriber using C++.
+A beginners tutorial for ROS Publisher and Subscriber using C++.
 This repository contains a simple tutorial to work with ROS Publisher and Subscriber to understand their roles in ROS.
 
 ## Dependencies
