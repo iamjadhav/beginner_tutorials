@@ -1,0 +1,6 @@
+ cpplint $( find . -name subscriber.cpp | grep -vE -e "^./build/" -e "^./vendor/") $( find . -name *.hpp | grep -vE -e "^./build/" -e "^./vendor/")
+Done processing ./subscriber.cpp
+
+ cpplint $( find . -name publisher.cpp | grep -vE -e "^./build/" -e "^./vendor/") $( find . -name *.hpp | grep -vE -e "^./build/" -e "^./vendor/")
+Done processing ./publisher.cpp
+
