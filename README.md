@@ -10,6 +10,7 @@ This repository contains a simple tutorial to work with ROS Publisher and Subscr
 ## Dependencies
 
 * Ubuntu 18.04 LTS
+* ROS Melodic
 * Modern C++ Programming Language
 * Roscpp Package
 * Std_msgs Package
