@@ -27,3 +27,12 @@ catkin_make
 git clone https://github.com/iamjadhav/beginner_tutorials.git
 ```
 
+## Run
+
+In a New Terminal, run the code using launch file
+
+```
+cd catkin_ws
+source devel/setup.bash
+roslaunch beginner_tutorials begin_tutorials.launch
+```
