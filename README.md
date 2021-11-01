@@ -24,6 +24,7 @@ catkin_make
 ```
 2) Clone the repository 
 ```
+cd src
 git clone https://github.com/iamjadhav/beginner_tutorials.git
 ```
 
@@ -32,7 +33,8 @@ git clone https://github.com/iamjadhav/beginner_tutorials.git
 In a New Terminal, run the code using launch file
 
 ```
-cd catkin_ws
+cd ~/catkin_ws
+catkin_make
 source devel/setup.bash
 roslaunch beginner_tutorials begin_tutorials.launch
 ```
