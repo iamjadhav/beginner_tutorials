@@ -34,26 +34,24 @@
  */
 
 #include <sstream>
+#include <string>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 
 
 int main(int argc, char **argv) {
   ros::init(argc, argv, "talker");
-
   ros::NodeHandle n;
-
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
-
   ros::Rate loop_rate(10);
 
   int count = 0;
   while (ros::ok()) {
     std_msgs::String msg;
 
-    std::stringstream ss;
-    ss << " Hey ! How's it going? " << count;
-    msg.data = ss.str();
+    std::string message;
+    message = " Hey ! How's it going? " + std::to_string(count);
+    msg.data = message;
 
     ROS_INFO("%s", msg.data.c_str());
 
