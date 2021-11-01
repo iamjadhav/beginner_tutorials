@@ -1,10 +1,19 @@
+/**
+ * @file publisher.cpp
+ * @author Aditya Jadhav (amjadhav@umd.edu)
+ * @brief Class AnalogSensor definitions
+ * @version 0.1
+ * @date 2021-10-31
+ * 
+ * @copyright Copyright (c) 2021
+ */
+
 #include <sstream>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 
 
 int main(int argc, char **argv) {
-
   ros::init(argc, argv, "talker");
 
   ros::NodeHandle n;
@@ -15,7 +24,6 @@ int main(int argc, char **argv) {
 
   int count = 0;
   while (ros::ok()) {
-
     std_msgs::String msg;
 
     std::stringstream ss;
