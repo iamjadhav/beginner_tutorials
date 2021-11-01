@@ -15,4 +15,15 @@ This repository contains a simple tutorial to work with ROS Publisher and Subscr
 * Std_msgs Package
 * Catkin_Make Build System
 
+## Build
+
+1) Create a Catkin Workspace and cd into it
+```
+cd ~/catkin_ws
+catkin_make
+```
+2) Clone the repository 
+```
+git clone https://github.com/iamjadhav/beginner_tutorials.git
+```
 
