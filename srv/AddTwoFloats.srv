@@ -1,8 +1,4 @@
-#request
-
 float64 a
 float64 b
 ---
-#response
-
 float64 addition
