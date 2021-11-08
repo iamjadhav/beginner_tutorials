@@ -61,8 +61,9 @@ int main(int argc, char **argv) {
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
   ros::ServiceServer service = n.advertiseService("AddTwoFloats",
                                                   floatAddition);
-  ROS_INFO("Ready for the Float Addition.");
-  ros::Rate loop_rate(10);
+  int frequency = atoi(argv[1]);  // command-line argument to change publish
+                                  // rate
+  ros::Rate loop_rate(frequency);
 
   int count = 0;
   std::string text_1;
