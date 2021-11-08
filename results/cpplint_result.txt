@@ -1,6 +1,8 @@
- cpplint $( find . -name subscriber.cpp | grep -vE -e "^./build/" -e "^./vendor/") $( find . -name *.hpp | grep -vE -e "^./build/" -e "^./vendor/")
-Done processing ./subscriber.cpp
-
- cpplint $( find . -name publisher.cpp | grep -vE -e "^./build/" -e "^./vendor/") $( find . -name *.hpp | grep -vE -e "^./build/" -e "^./vendor/")
-Done processing ./publisher.cpp
+cpplint $( find . -name *.cpp | grep -vE -e "^./build/" -e "^./vendor/") $( find . -name *.hpp | grep -vE -e "^./build/" -e "^./vendor/")
+./src/beginner_tutorials/src/publisher.cpp:42:  Static/global string variables are not permitted.  [runtime/string] [4]
+./src/beginner_tutorials/src/publisher.cpp:44:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::AddTwoFloats::Request &req  [runtime/references] [2]
+./src/beginner_tutorials/src/publisher.cpp:45:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::AddTwoFloats::Response &res  [runtime/references] [2]
+Done processing ./src/beginner_tutorials/src/publisher.cpp
+Done processing ./src/beginner_tutorials/src/subscriber.cpp
+Total errors found: 3
 
