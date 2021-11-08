@@ -43,7 +43,7 @@ roslaunch beginner_tutorials begin_tutorials.launch
 
 Running with a frequency different than the default, just change the last command to,
 ```
-roslaunch beginner_tutorials begin_tutorials.launch frequency:="<desired publish rate>"
+roslaunch beginner_tutorials begin_tutorials.launch frequency:="<desired frequency>"
 ```
 
 
