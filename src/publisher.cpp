@@ -39,10 +39,19 @@
 #include "std_msgs/String.h"
 #include "beginner_tutorials/AddTwoFloats.h"
 
+// Empty String Initialization
 std::string message_1 = "";
 
+/**
+ * @brief ROS Service to add two Float Numbers 
+ * 
+ * @param req Service Request 
+ * @param res Service Response
+ * @return true
+ */
 bool floatAddition(beginner_tutorials::AddTwoFloats::Request &req,
                    beginner_tutorials::AddTwoFloats::Response &res) {
+  // Warning and Fatal Error if Numbers are Negative
   if ((req.a < 0) && (req.b < 0)) {
       ROS_FATAL_STREAM(" Both Numbers are Negative !!");
   } else if ((req.a < 0) || (req.b < 0)) {
@@ -50,12 +59,14 @@ bool floatAddition(beginner_tutorials::AddTwoFloats::Request &req,
   }
   res.addition = req.a + req.b;  // Addition of the two valid floats
 
+  // Error if the addition is equal to 0
   if (res.addition == 0) {
       ROS_ERROR_STREAM(" The Float Addition is 0 !!");
   }
   ROS_INFO(" Addition of A=%f and B=%f ", req.a, req.b);
   ROS_INFO(" is : [%f]", res.addition);
 
+  // Creating a String of the Service to be added to global string
   std::string text;
   text = " The Float Addition is : " + std::to_string(res.addition);
   message_1 = text;
@@ -79,11 +90,11 @@ int main(int argc, char **argv) {
 
   text_1 = " Hey ! How's it going? ";
 
-
   while (ros::ok()) {
     ROS_DEBUG_STREAM("Publish Frequency is : " << frequency);
     std_msgs::String msg;
 
+    // Final String with Service String and Count
     message = text_1 + std::to_string(count) + "." + message_1;
     msg.data = message;
 

@@ -26,7 +26,7 @@
 /**
  * @file subscriber.cpp
  * @author Aditya Jadhav (amjadhav@umd.edu)
- * @brief Listener File
+ * @brief ROS Subscriber to listen to a topic
  * @version 0.1
  * @date 2021-10-31
  *
@@ -38,6 +38,10 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 
+/**
+ * @brief Subscriber Function to listen to chatter topic
+ * @param msg String that is being heard
+ */
 void chatterCallback(const std_msgs::String::ConstPtr& msg) {
   ROS_INFO("I'm hearing: [%s]", msg->data.c_str());
 }
