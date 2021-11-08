@@ -2,17 +2,17 @@
 * MIT License
 *
 * Copyright (c) Aditya Jadhav
-* 
+*
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the "Software"), to deal
 * in the Software without restriction, including without limitation the rights
 * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 * copies of the Software, and to permit persons to whom the Software is
 * furnished to do so, subject to the following conditions:
-* 
+*
 * The above copyright notice and this permission notice shall be included in all
 * copies or substantial portions of the Software.
-* 
+*
 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -20,16 +20,16 @@
 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 * SOFTWARE.
-* 
+*
 */
 
 /**
  * @file publisher.cpp
  * @author Aditya Jadhav (amjadhav@umd.edu)
- * @brief Talker file
+ * @brief ROS Publisher to publish a message to a topic
  * @version 0.1
  * @date 2021-10-31
- * 
+ *
  * @copyright Copyright (c) 2021
  */
 
@@ -37,20 +37,43 @@
 #include <string>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include "beginner_tutorials/AddTwoFloats.h"
+
+std::string message_1 = "";
+
+bool floatAddition(beginner_tutorials::AddTwoFloats::Request &req,
+                   beginner_tutorials::AddTwoFloats::Response &res) {
+  res.addition = req.a + req.b;  // Addition of the two valid floats
+
+  ROS_INFO(" Addition of A=%f and B=%f ", req.a, req.b);
+  ROS_INFO("is : [%f]", res.addition);
+
+  std::string text;
+  text = " The Float Addition is : " + std::to_string(res.addition);
+  message_1 = text;
+  return true;
+}
 
 
 int main(int argc, char **argv) {
   ros::init(argc, argv, "talker");
   ros::NodeHandle n;
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
+  ros::ServiceServer service = n.advertiseService("AddTwoFloats",
+                                                  floatAddition);
+  ROS_INFO("Ready for the Float Addition.");
   ros::Rate loop_rate(10);
 
   int count = 0;
+  std::string text_1;
+  std::string message;
+
+  text_1 = " Hey ! How's it going? ";
+
   while (ros::ok()) {
     std_msgs::String msg;
 
-    std::string message;
-    message = " Hey ! How's it going? " + std::to_string(count);
+    message = text_1 + std::to_string(count) + "." + message_1;
     msg.data = message;
 
     ROS_INFO("%s", msg.data.c_str());
