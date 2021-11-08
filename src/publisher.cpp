@@ -43,10 +43,18 @@ std::string message_1 = "";
 
 bool floatAddition(beginner_tutorials::AddTwoFloats::Request &req,
                    beginner_tutorials::AddTwoFloats::Response &res) {
+  if ((req.a < 0) && (req.b < 0)) {
+      ROS_FATAL_STREAM(" Both Numbers are Negative !!");
+  } else if ((req.a < 0) || (req.b < 0)) {
+      ROS_WARN_STREAM(" A or B is Negative");
+  }
   res.addition = req.a + req.b;  // Addition of the two valid floats
 
+  if (res.addition == 0) {
+      ROS_ERROR_STREAM(" The Float Addition is 0 !!");
+  }
   ROS_INFO(" Addition of A=%f and B=%f ", req.a, req.b);
-  ROS_INFO("is : [%f]", res.addition);
+  ROS_INFO(" is : [%f]", res.addition);
 
   std::string text;
   text = " The Float Addition is : " + std::to_string(res.addition);
@@ -71,7 +79,9 @@ int main(int argc, char **argv) {
 
   text_1 = " Hey ! How's it going? ";
 
+
   while (ros::ok()) {
+    ROS_DEBUG_STREAM_ONCE("Publish Frequency is : " << frequency);
     std_msgs::String msg;
 
     message = text_1 + std::to_string(count) + "." + message_1;
