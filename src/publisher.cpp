@@ -81,7 +81,7 @@ int main(int argc, char **argv) {
 
 
   while (ros::ok()) {
-    ROS_DEBUG_STREAM_ONCE("Publish Frequency is : " << frequency);
+    ROS_DEBUG_STREAM("Publish Frequency is : " << frequency);
     std_msgs::String msg;
 
     message = text_1 + std::to_string(count) + "." + message_1;
