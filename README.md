@@ -14,6 +14,7 @@ This repository contains a simple tutorial to work with ROS Publisher and Subscr
 * Modern C++ Programming Language
 * Roscpp Package
 * Std_msgs Package
+* Message_generation Package
 * Catkin_Make Build System
 
 ## Build
@@ -38,4 +39,20 @@ cd ~/catkin_ws
 catkin_make
 source devel/setup.bash
 roslaunch beginner_tutorials begin_tutorials.launch
+```
+
+Running with a frequency different than the default, just change the last command to,
+```
+roslaunch beginner_tutorials begin_tutorials.launch frequency:="<desired publish rate>"
+```
+
+
+## ROS Service
+
+In a New Terminal (while the nodes are running), and run
+
+```
+cd catkin_ws
+source devel/setup.bash
+rosservice call /AddTwoFloats "a: <float of your choice> b: <float of your choice>"
 ```
