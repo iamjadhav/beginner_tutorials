@@ -33,6 +33,7 @@
  * @copyright Copyright (c) 2021
  */
 
+#include <tf/transform_broadcaster.h>
 #include <sstream>
 #include <string>
 #include "ros/ros.h"
@@ -43,9 +44,9 @@
 std::string message_1 = "";
 
 /**
- * @brief ROS Service to add two Float Numbers 
- * 
- * @param req Service Request 
+ * @brief ROS Service to add two Float Numbers
+ *
+ * @param req Service Request
  * @param res Service Response
  * @return true
  */
@@ -77,6 +78,12 @@ bool floatAddition(beginner_tutorials::AddTwoFloats::Request &req,
 int main(int argc, char **argv) {
   ros::init(argc, argv, "talker");
   ros::NodeHandle n;
+
+  // TransformBroadcaster object to send transformations
+  tf::TransformBroadcaster broad;
+  tf::Transform tr;
+  tf::Quaternion quater;
+
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
   ros::ServiceServer service = n.advertiseService("AddTwoFloats",
                                                   floatAddition);
@@ -93,6 +100,13 @@ int main(int argc, char **argv) {
   while (ros::ok()) {
     ROS_DEBUG_STREAM("Publish Frequency is : " << frequency);
     std_msgs::String msg;
+
+    // Setting the Rotation, Origin and sending the transform over
+    quater.setRPY(0.0, 0.0, 1.0);
+    tr.setRotation(quater);
+    tr.setOrigin(tf::Vector3(1.0, 2.0, 0.0));
+    broad.sendTransform(tf::StampedTransform(tr, ros::Time::now(), "world",
+                      "talk"));
 
     // Final String with Service String and Count
     message = text_1 + std::to_string(count) + "." + message_1;
