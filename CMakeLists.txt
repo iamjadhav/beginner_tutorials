@@ -228,7 +228,7 @@ if(CATKIN_ENABLE_TESTING)
   ${catkin_LIBRARIES}
   )
   add_dependencies(
-  talker
+  publisher
   AddTwoFloatsTest
   ${catkin_EXPORTED_TARGETS}
   )

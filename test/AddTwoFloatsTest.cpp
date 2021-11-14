@@ -36,27 +36,27 @@
 #include <ros/ros.h>
 #include <ros/service_client.h>
 #include <gtest/gtest.h>
-#include "begginer_tutorials/AddTwoFloats.h"
+#include "beginner_tutorials/AddTwoFloats.h"
 
 TEST(AdditionTest, Test_Add_Two_Floats) {
-    ros::NodeHandle nd;
-    ros::ServiceClient client = nd->serviceClient<beginner_tutorials::
+    ros::NodeHandle n;
+    ros::ServiceClient client = n.serviceClient<beginner_tutorials::
                                 AddTwoFloats>("float_addition");
 
     bool exists(client.waitForExistence(ros::Duration(8)));
-    EXPECT_TRUE(exists);
+    EXPECT_FALSE(exists);
 
     beginner_tutorials::AddTwoFloats service;
-    service.req.a = 1.2;
-    service.req.b = 0.2;
+    service.request.a = 0.0;
+    service.request.b = 0.0;
     client.call(service);
 
-    EXPECT_EQ(service.res.addition, service.req.a + service.req.b);
+    EXPECT_EQ(service.response.addition, service.request.a + service.request.b);
 }
 
 int main(int argc, char **argv) {
     ros::init(argc, argv, "addition_tester");
-    ros::NodeHandle nd;
+    ros::NodeHandle n;
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
