@@ -45,7 +45,6 @@ std::string message_1 = "";
 
 /**
  * @brief ROS Service to add two Float Numbers
- *
  * @param req Service Request
  * @param res Service Response
  * @return true
@@ -101,7 +100,7 @@ int main(int argc, char **argv) {
     ROS_DEBUG_STREAM("Publish Frequency is : " << frequency);
     std_msgs::String msg;
 
-    // Setting the Rotation, Origin and sending the transform over
+    // Setting the Non-Zero Rotation, Origin and sending the transform over
     quater.setRPY(0.0, 0.0, 1.0);
     tr.setRotation(quater);
     tr.setOrigin(tf::Vector3(1.0, 2.0, 0.0));

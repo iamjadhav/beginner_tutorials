@@ -38,19 +38,26 @@
 #include <gtest/gtest.h>
 #include "beginner_tutorials/AddTwoFloats.h"
 
+/**
+ * @brief These are tests for the existence of service AddTwoFloats
+ * and its operation
+ */
 TEST(AdditionTest, Test_Add_Two_Floats) {
     ros::NodeHandle n;
     ros::ServiceClient client = n.serviceClient<beginner_tutorials::
                                 AddTwoFloats>("float_addition");
 
+    // Test to validate service existence
     bool exists(client.waitForExistence(ros::Duration(8)));
     EXPECT_FALSE(exists);
 
+    // Service object to get the request and response
     beginner_tutorials::AddTwoFloats service;
     service.request.a = 0.0;
     service.request.b = 0.0;
     client.call(service);
 
+    // Test to validate the service output
     EXPECT_EQ(service.response.addition, service.request.a + service.request.b);
 }
 
