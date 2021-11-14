@@ -214,3 +214,22 @@ target_link_libraries(publisher ${catkin_LIBRARIES})
 add_executable(subscriber src/subscriber.cpp)
 target_link_libraries(subscriber ${catkin_LIBRARIES})
 #add_dependencies(subscriber beginner_tutorials_generate_messages_cpp)
+
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+
+  add_rostest_gtest(
+  AddTwoFloatsTest 
+  test/AddTwoFloatsTest.launch 
+  test/AddTwoFloatsTest.cpp
+  )
+  target_link_libraries(
+  AddTwoFloatsTest
+  ${catkin_LIBRARIES}
+  )
+  add_dependencies(
+  talker
+  AddTwoFloatsTest
+  ${catkin_EXPORTED_TARGETS}
+  )
+endif()
