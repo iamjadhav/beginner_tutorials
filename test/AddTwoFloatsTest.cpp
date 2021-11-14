@@ -44,7 +44,7 @@
  */
 TEST(AdditionTest, Test_Add_Two_Floats) {
     ros::NodeHandle n;
-    ros::ServiceClient client = n.serviceClient<beginner_tutorials::
+    auto client = n.serviceClient<beginner_tutorials::
                                 AddTwoFloats>("float_addition");
 
     // Test to validate service existence
