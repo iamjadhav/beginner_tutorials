@@ -64,11 +64,9 @@ rosservice call /AddTwoFloats "a: <float of your choice> b: <float of your choic
 
 To view the transform between the world and talk frames: in one terminal,
 
-- launch the nodes from the catkin_ws using the launch file
+launch the nodes from the catkin_ws using the launch file
 
-and in another terminal,
-
-- type,
+and in another terminal, type,
 
 ```
 cd ~/catkin_ws
@@ -95,7 +93,7 @@ source devel/setup.bash
 catkin_make run_tests_beginner_tutorials
 ```
 
-OR to run the tests with the launch file: type,
+OR to run the tests with the launch file: In a new terminal, type,
 
 ```
 cd ~/catkin_ws
@@ -105,7 +103,7 @@ rostest beginner_tutorials AddTwoFloatsTest.launch
 
 ## ROSBAG 
 
-# Recording a bag
+- Recording a bag
 
 The rosbagEnable argument is disabled by default. To record a rosbag: launch the nodes with the following commands,
 
@@ -116,11 +114,11 @@ source devel/setup.bash
 roslaunch beginner_tutorials begin_tutorials.launch rosbagEnable:=true
 ```
 
-# Playing the bag
+- Playing the bag
 
 To play a rosbag: while the nodes are launched OR a separate roscore is running,
 
-- in a different terminal, cd to the directory where rosbags are stored and type,
+in a different terminal, cd to the directory where rosbags are stored and type,
 
 ```
 cd cakin_ws/src/beginner_tutorials/results
@@ -133,14 +131,15 @@ To play a rosbag with the listener demo: in one terminal, type,
 cd cakin_ws/src/beginner_tutorials/results
 rosbag play recordedbag.bag
 ```
-- and in a different terminal, type,
+
+and in a different terminal, type,
 
 ```
 cd ~/catkin_ws
 rostopic echo /chatter
 ```
 
-# Inspecting the bag 
+- Inspecting the bag 
 
 To inspect a recorded bag file: cd into the directory where rosbags are stored and type,
 
