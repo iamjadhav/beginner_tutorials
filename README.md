@@ -19,13 +19,14 @@ This repository contains a simple tutorial to work with ROS Publisher and Subscr
 
 ## Build
 
-1) Create a Catkin Workspace and cd into it
+Create a Catkin Workspace and cd into it
+
 ```
 cd ~/catkin_ws
 catkin_make
 ```
 
-2) Clone the repository 
+Clone the repository 
 
 ```
 cd src
